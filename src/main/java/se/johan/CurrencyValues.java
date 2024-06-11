@@ -13,5 +13,4 @@ public class CurrencyValues {
     static double eurSek = 11.2897;
 
 
-
 }
