@@ -1,5 +1,6 @@
 package se.johan;
 
+import java.time.temporal.ChronoUnit;
 import java.util.Scanner;
 
 public class CurrencyConverter {
@@ -43,7 +44,8 @@ public class CurrencyConverter {
                 Calculations.convertEurSek(num1, CurrencyValues.eurSek);
             }
             if (option == 5) {
-                System.out.println("Thank you for using the converter. Exiting..");
+                System.out.println("Thank you for using the converter.");
+                System.out.println("Exiting at " +Calculations.currentTime.truncatedTo(ChronoUnit.SECONDS));
                 System.exit(0);
             }
 
