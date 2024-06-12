@@ -2,6 +2,8 @@ package se.johan.LiveCoding_CurrencyConverterApp;
 
 public class ExchangeOperations {
 
+
+    // +public access outside package. static within package, +private only for the class
     public static double convertSekToUsd(double sekAmount) {
 
         return sekAmount * ExchangeRates.sekToUsdRate;

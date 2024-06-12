@@ -11,15 +11,18 @@ public class livecodingapp {
 
         // Scanner for input
         Scanner scanner = new Scanner(System.in);
-
+        int choice;
         //calling displayMenu from the same app
-        displayMenu();
-        int choice = scanner.nextInt();
-        performOperations(choice);
 
-        // performOperations
 
-    }
+        do {
+            displayMenu();
+            choice = scanner.nextInt();
+            performOperations(choice);
+        } while (choice != 0); //as long as the value is not 0 it will loop, otherwise it will move on
+    } //end of method
+
+    // performOperations
 
     public static void displayMenu() {
         System.out.println("Currency Converter App");
@@ -33,41 +36,66 @@ public class livecodingapp {
 
     public static void performOperations(int operationNumber) {
 
-        // switch because we only have one single input
-        switch (operationNumber) {
+        double usdAmount, sekAmount, euroAmount;
+        switch (operationNumber) { // switch because we only have one single input
+
+            case 0:
+                //display GoodBye message
+                System.out.println("Exiting Converter!");
+
+                break;
             case 1:
-                System.out.println("Operation 1 has been executed!");
+                sekAmount = getAmount("SEK"); // getAmount(String currency)
+                usdAmount = ExchangeOperations.convertSekToUsd(sekAmount);
+                displayConversationResult(sekAmount, usdAmount, "SEK", "USD");
                 //perform sek to usd
                 break;
 
 
             case 2:
-                System.out.println("Operation 2 has been executed!");
-                //perform sek to sek
+
+                usdAmount = getAmount("USD");
+                sekAmount = ExchangeOperations.convertUsdToSek(usdAmount);
+                displayConversationResult(usdAmount, sekAmount, "USD", "SEK");
+                //perform usd to sek
                 break;
 
 
             case 3:
-                System.out.println("Operation 3 has been executed!");
+                sekAmount = getAmount("SEK");
+                euroAmount = ExchangeOperations.convertSekToEuro(sekAmount);
+                displayConversationResult(sekAmount, euroAmount, "SEK", "EUR");
                 //perform sek to euro
                 break;
 
 
             case 4:
-                System.out.println("Operation 4 has been executed!");
+                euroAmount = getAmount("EUR");
+                sekAmount = ExchangeOperations.convertEuroToSek(euroAmount);
+                displayConversationResult(euroAmount, sekAmount, "EUR", "SEK");
                 //perform euro to sek
                 break;
 
 
-            case 5:
-                System.out.println("Operation 5 has been executed!");
-                //display GoodBye message
-                break;
-
             default:
-                System.out.println("Display a valid choice");
+                System.out.println("Invalid choice, Please enter a valid option");
+
+
         }
     }
+
+    public static double getAmount(String currency) { // (String currency) will take the input from the cases stated, like "SEK", to make it dynamic in presenting the result
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter amount in " + currency + " :");
+        return scanner.nextDouble();
+    }
+
+    // private static because we only need to use it within this class
+    private static void displayConversationResult(double fromAmount, double toAmount, String fromCurrency, String toCurrency) {
+        System.out.println(fromAmount + " " + fromCurrency + " is equal to " + toAmount + " " + toCurrency + " .");
+
+    }
 }
+
 
 
