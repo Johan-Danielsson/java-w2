@@ -12,8 +12,7 @@ public class CurrencyConverter {
 
         // while loop to run the app until exit
         while (true) {
-            System.out.println("Currency Converter App");
-            System.out.println("----------------------");
+            System.out.println("--Currency Converter App--");
             System.out.println("1. Convert SEK to USD");
             System.out.println("2. Convert USD to SEK");
             System.out.println("3. Convert SEK to EUR");
